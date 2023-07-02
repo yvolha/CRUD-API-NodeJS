@@ -2,19 +2,28 @@
   "name": "crudapi",
   "version": "1.0.0",
   "description": "CRUD API in Vanilla NodeJS by Volha Yakauleva",
+  "type": "module",
   "scripts": {
-    "dev": "node server.js",
-    "prod": "nodemon server.js"
+    "build": "npx tsc",
+    "start:dev": "npx nodemon",
+    "start:prod": "npm run build && node dist/server",
+    "lint": "eslint . --ext .ts --fix"
   },
   "author": "Volha Yakauleva <yvolha>",
   "dependencies": {
-    "typescript": "^5.1.6",
+    "typescript": "^5.0.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.22",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.1"
   }
 }
