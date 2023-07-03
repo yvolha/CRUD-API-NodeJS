@@ -14,9 +14,12 @@ export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
 
   switch (req.url) {
     case "/api/users":
-      console.log("here come all the users");
       const allUsers = await getAllUsers();
       sendRes(res, allUsers);
+      break;
+    case "/":
+      const msgStart = 'This is the App Start Page. To get all users, please go to http://127.0.0.1:8080/api/users'
+      sendRes(res, msgStart);
       break;
     default:
       const msg404 =
