@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { getAllUsers } from "../database/database.js";
-import { sendRes } from "./request-handler.js";
+import { sendRes } from "./requestHandler.js";
 
 export const handleGet = async (req: IncomingMessage, res: ServerResponse) => {
   if (req.url === "/api/users") {

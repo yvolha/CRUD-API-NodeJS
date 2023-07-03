@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import http from "http";
-import { reqHandler } from "./handlers/request-handler.js";
+import { reqHandler, sendErr } from "./handlers/requestHandler.js";
 //import { database } from "./database/database.js";
 
 dotenv.config();
@@ -16,7 +16,7 @@ const server = http.createServer((req, res) => {
   try {
     reqHandler(req, res);
   } catch (e) {
-    console.log((e as Error).message);
+    sendErr(res, 500, "A processing error occurred (Code 500).");
   }
 });
 

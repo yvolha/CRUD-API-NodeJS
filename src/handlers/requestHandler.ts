@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { handleGet } from "./get.js";
+import { handleGet } from "./handleGet.js";
+import { handlePost } from "./handlePost.js";
 
 const headers = {
   "access-control-allow-origin": "*",
@@ -23,6 +24,9 @@ export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
     case reqTypes.GET:
       await handleGet(req, res);
       break;
+    case reqTypes.POST:
+      await handlePost(req, res);
+      break;
     /*
     case "/":
       const msgStart =
@@ -32,7 +36,7 @@ export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
       */
     default:
       const msg404 =
-        "404 Page Not Found, but thank you for visiting! To get all users, please go to http://127.0.0.1:8080/api/users";
+        "Page Not Found, but thank you for visiting! To get all users, please go to http://127.0.0.1:8080/api/users (Code 404)";
       sendRes(res, msg404, 404);
   }
 
