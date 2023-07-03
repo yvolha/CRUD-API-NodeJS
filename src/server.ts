@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import http from "http";
-import { reqHandler } from "./utils/request-handler.js";
+import { reqHandler } from "./handlers/request-handler.js";
 //import { database } from "./database/database.js";
 
 dotenv.config();

@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { getAllUsers } from "../database/database.js";
+import { handleGet } from "./get.js";
 
 const headers = {
   "access-control-allow-origin": "*",
@@ -9,18 +9,27 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
-  console.log(req.url);
+enum reqTypes {
+  GET = "GET",
+  PUT = "PUT",
+  POST = "POST",
+  DELETE = "DELETE",
+}
 
-  switch (req.url) {
-    case "/api/users":
-      const allUsers = await getAllUsers();
-      sendRes(res, allUsers);
+export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
+  console.log(req.url, req.method);
+
+  switch (req.method) {
+    case reqTypes.GET:
+      await handleGet(req, res);
       break;
+    /*
     case "/":
-      const msgStart = 'This is the App Start Page. To get all users, please go to http://127.0.0.1:8080/api/users'
+      const msgStart =
+        "This is the App Start Page. To get all users, please go to http://127.0.0.1:8080/api/users";
       sendRes(res, msgStart);
       break;
+      */
     default:
       const msg404 =
         "404 Page Not Found, but thank you for visiting! To get all users, please go to http://127.0.0.1:8080/api/users";
