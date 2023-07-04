@@ -1,10 +1,11 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { handleGet } from "./handleGet.js";
 import { handlePost } from "./handlePost.js";
+import { handlePut } from "./handlePut.js";
 
 const headers = {
   "access-control-allow-origin": "*",
-  "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "access-control-allow-methods": "GET, POST, PUT, DELETE",
   "access-control-allow-headers": "content-type, accept",
   "access-control-max-age": 10,
   "Content-Type": "application/json",
@@ -26,6 +27,9 @@ export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
       break;
     case reqTypes.POST:
       await handlePost(req, res);
+      break;
+    case reqTypes.PUT:
+      await handlePut(req, res);
       break;
 
     default:
