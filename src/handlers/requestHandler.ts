@@ -2,6 +2,7 @@ import { IncomingMessage, ServerResponse } from "http";
 import { handleGet } from "./handleGet.js";
 import { handlePost } from "./handlePost.js";
 import { handlePut } from "./handlePut.js";
+import { handleDelete } from "./handleDelete.js";
 
 const headers = {
   "access-control-allow-origin": "*",
@@ -31,7 +32,9 @@ export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
     case reqTypes.PUT:
       await handlePut(req, res);
       break;
-
+    case reqTypes.DELETE:
+      await handleDelete(req, res);
+      break;
     default:
       const msg404 =
         "Page Not Found, but thank you for visiting! To get all users, please go to http://127.0.0.1:8080/api/users (Code 404)";
