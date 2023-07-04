@@ -20,7 +20,6 @@ enum reqTypes {
 }
 
 export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
-  console.log(req.url, req.method);
 
   switch (req.method) {
     case reqTypes.GET:

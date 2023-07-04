@@ -9,7 +9,6 @@ export const handlePut = async (req: IncomingMessage, res: ServerResponse) => {
   let data = "";
 
   req.on("data", (chunk) => {
-    console.log("handling chunks");
     if (chunk) {
       data += chunk;
     } else return;
