@@ -27,24 +27,12 @@ export const reqHandler = async (req: IncomingMessage, res: ServerResponse) => {
     case reqTypes.POST:
       await handlePost(req, res);
       break;
-    /*
-    case "/":
-      const msgStart =
-        "This is the App Start Page. To get all users, please go to http://127.0.0.1:8080/api/users";
-      sendRes(res, msgStart);
-      break;
-      */
+
     default:
       const msg404 =
         "Page Not Found, but thank you for visiting! To get all users, please go to http://127.0.0.1:8080/api/users (Code 404)";
       sendRes(res, msg404, 404);
   }
-
-  /*
-  const action = actions[req.method];
-  if (action) action(req, res);
-  else sendRes(res, 404, 'Not Found');
-  */
 };
 
 export const sendRes = (res: ServerResponse, data?: unknown, statusCode?: number) => {

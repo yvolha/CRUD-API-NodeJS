@@ -5,7 +5,7 @@ import { sendErr, sendRes } from "./requestHandler.js";
 import { isJsonString } from "../utils/isJSONParsed.js";
 import { IReqBody, isBodyCorrect } from "../utils/isBodyCorrect.js";
 
-export const handlePost = (req: IncomingMessage, res: ServerResponse) => {
+export const handlePost = async (req: IncomingMessage, res: ServerResponse) => {
   let data = "";
 
   req.on("data", (chunk) => {
@@ -25,7 +25,7 @@ export const handlePost = (req: IncomingMessage, res: ServerResponse) => {
         sendErr(res, 400, "Body does not contain all required fields (Code 400).");
       }
     } else {
-      sendErr(res, 500, "A processing error occurred (Code 500).");
+      sendErr(res, 500, "Processing error occurred (Code 500).");
     }
   });
 };
